@@ -30,7 +30,7 @@ public class Entry {
 
 
     @OneToMany
-    @JoinColumn(name="entry")
+    @JoinColumn(name="yorum_id")
     @JsonIgnore
     private List<Yorum> yorumList;
 
@@ -60,6 +60,7 @@ public class Entry {
         this.yorumList=yorumList;
 
     }
+
 
     public Entry(String name, User user) {
         this.name = name;
@@ -106,9 +107,16 @@ public class Entry {
         this.postedAt = postedAt;
     }
 
-    public Entry(long id, String name) {
+    public Entry( String name,long id) {
         this.id = id;
         this.name = name;
+    }
+
+    public Entry(String name, User user, Instant postedAt){
+
+        this.name=name;
+        this.user=user;
+        this.postedAt=postedAt;
     }
 }
 

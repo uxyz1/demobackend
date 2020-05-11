@@ -15,12 +15,12 @@ public class EntryController {
 
 
     private EntryService entryService;
-    private UserService userService;
+    private User user;
 
     @Autowired
     public EntryController(EntryService entryService, UserService userService){
         this.entryService=entryService;
-        this.userService=userService;
+        this.user=user;
     }
 
     @GetMapping("api/entries")
@@ -32,9 +32,7 @@ public class EntryController {
 // Wenn man Entry schreibt
     @PostMapping("/api/entry")
     public Entry entryschreiben(@RequestBody Entry entry)  {
-
-
-           return entryService.entryschreiben(entry.getName());}
+        return entryService.entryschreiben(entry.getName(),entry.getId(),entry.getPostedAt());}
 
     @GetMapping("/api/entries/{entryId}")
     public Entry showEntry(@PathVariable("entryId") long id) {

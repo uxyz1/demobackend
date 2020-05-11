@@ -8,6 +8,7 @@ import com.example.demobackend.yorum.YorumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Set;
 
@@ -30,10 +31,9 @@ public class EntryService {
         return entryRepository.findAll();
     }
 
-    public  Entry entryschreiben(String  name){
-
-
-        return entryRepository.save(new Entry(name));
+    public  Entry entryschreiben(String  name, long user_id, Instant postedAt){
+            User user = userService.getUserById(user_id);// bu koddan repositorye user_ide yi kaydettirdi
+        return entryRepository.save(new Entry(name,user,postedAt));
     }
 
 

@@ -32,8 +32,8 @@ public class DummyDataService {
 
 
 
-        Entry entry = new Entry(1,"Istanbul hakkinda bilgi");
-        Entry entry1= new Entry(1,"Köln");
+        Entry entry = new Entry("Istanbul hakkinda bilgi",1);
+        Entry entry1= new Entry("Köln",1);
         entryService.addEntry(entry);
         entryService.addEntry(entry1);
 
