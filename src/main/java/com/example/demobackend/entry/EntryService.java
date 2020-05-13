@@ -27,7 +27,7 @@ public class EntryService {
     }
 
 
-    public List<Entry> getAllEntries(){
+    public Set<Entry> getAllEntries( ){
         return entryRepository.findAll();
     }
 
@@ -45,6 +45,14 @@ public class EntryService {
 
     }
 
+    public Set<Entry> delete(long id){
+        Entry entry= entryRepository.findById(id);
+        if(entry!=null){
+            entryRepository.delete(entry);
+        }
+        return entryRepository.findAll();
+    }
+
     public List<Yorum> getYorumList(long id){
         return yorumRepository.findYorumByEntryId(id);
     }
@@ -54,7 +62,7 @@ public class EntryService {
     }
 
     public Entry getEntryByname(String name){
-        return entryRepository.findByname(name);
+        return entryRepository.findByName(name);
     }
 
 

@@ -38,7 +38,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/api/", "/api/sessionUser","/api/entryDetail/*", "/api/entries","/api/entry/*","/api/entries/*","/api/entry","/api/register","/api/yorum/*","/api/yorum", "/api/registration", "/api/register/*",  "/api/login", "/login").permitAll()
+                .antMatchers("/api/", "/api/sessionUser","/api/entryDetail/*", "/api/entries","/api/entry/*","/api/entries/*","/api/entry","/api/deleteEntry/*","/api/register","/api/yorum/*","/api/yorum", "/api/registration", "/api/register/*",  "/api/login", "/login").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .and()

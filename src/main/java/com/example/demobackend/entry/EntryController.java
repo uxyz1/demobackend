@@ -24,7 +24,7 @@ public class EntryController {
     }
 
     @GetMapping("api/entries")
-    public List<Entry> showAllEntries(){
+    public Set<Entry> showAllEntries( ){
         return entryService.getAllEntries();
 
     }
@@ -39,5 +39,9 @@ public class EntryController {
         return entryService.getEntryById(id);
     }
 
+    @PostMapping("/api/deleteEntry/{entryId}")
+    public Set<Entry>deleteEntry(@PathVariable("entryId") long id){
+        return entryService.delete(id);
+    }
 
 }

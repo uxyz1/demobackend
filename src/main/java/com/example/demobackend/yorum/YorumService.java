@@ -2,9 +2,13 @@ package com.example.demobackend.yorum;
 
 
 import com.example.demobackend.entry.Entry;
+import com.example.demobackend.entry.EntryRepository;
+import com.example.demobackend.user.User;
+import com.example.demobackend.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Set;
 
@@ -12,11 +16,14 @@ import java.util.Set;
 public class YorumService {
 
     private YorumRepository yorumRepository;
+    private EntryRepository entryRepository;
+    private UserService userService;
 
 
     @Autowired
-    public YorumService(YorumRepository yorumRepository){
+    public YorumService(YorumRepository yorumRepository,EntryRepository entryRepositor, UserService userService){
         this.yorumRepository=yorumRepository;
+        this.entryRepository=entryRepositor;
     }
 
     public List<Yorum> getAllYorums(){
@@ -33,8 +40,10 @@ public class YorumService {
     }
 
 
-    public Yorum yorumschreiben(String  text, long id){
-        return yorumRepository.save(new Yorum(text,id));
+    public Yorum yorumschreiben(String text, long id, Instant postedAt){
+        Entry entry = entryRepository.findById(id);
+        //User user = userService.getUserById(user_id);
+        return yorumRepository.save(new Yorum(text,entry,postedAt));
     }
 
     public YorumRepository getYorumRepository(){

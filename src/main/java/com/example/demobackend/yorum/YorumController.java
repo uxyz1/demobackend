@@ -25,12 +25,10 @@ public class YorumController {
     }
 
 
-
-
-
     @PostMapping("/api/yorum/{entryId}")
-    public Yorum yorumschreiben(@RequestBody Yorum yorum) {
-        return yorumService.yorumschreiben(yorum.getText(),yorum.getId());
+    public Yorum yorumschreiben(@RequestBody Yorum yorum,@PathVariable("entryId") long id) {
+
+        return yorumService.yorumschreiben(yorum.getText(),id,yorum.getPostedAt());
     }
 
 

@@ -37,6 +37,29 @@ public class Yorum {
     public Yorum() {
     }
 
+    public Yorum(String text, long id, Instant postedAt) {
+        this.text = text;
+        this.id = id;
+        this.postedAt = postedAt;
+    }
+
+    public Yorum(String text, Entry entry, Instant postedAt) {
+        this.text = text;
+        this.entry = entry;
+        this.postedAt=postedAt;
+
+
+    }
+
+    public Yorum(String text) {
+        this.text = text;
+    }
+
+    public Yorum(String text, User user) {
+        this.text = text;
+        this.user = user;
+    }
+
     public Yorum(String text, User user, Entry entry, Instant postedAt) {
         this.text = text;
         this.user = user;
